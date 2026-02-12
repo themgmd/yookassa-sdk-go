@@ -28,10 +28,10 @@ func NewPaymentHandler(client *Client) *PaymentHandler {
 	return &PaymentHandler{client: client}
 }
 
-func (p PaymentHandler) WithIdempotencyKey(idempotencyKey string) *PaymentHandler {
+func (p *PaymentHandler) WithIdempotencyKey(idempotencyKey string) *PaymentHandler {
 	p.idempotencyKey = idempotencyKey
 
-	return &p
+	return p
 }
 
 // CapturePayment confirms payment, accepts and returns the Payment entity.
@@ -130,9 +130,6 @@ func (p *PaymentHandler) CreatePayment(payment *yoopayment.Payment) (*yoopayment
 		return nil, err
 	}
 
-	if paymentResponse.Confirmation == nil {
-		return nil, errors.New("empty confirmation url")
-	}
 	return paymentResponse, nil
 }
 
