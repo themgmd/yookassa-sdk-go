@@ -71,7 +71,7 @@ func (p *PaymentHandler) CapturePayment(payment *yoopayment.Payment) (*yoopaymen
 	return paymentResponse, nil
 }
 
-// CancelPayment cancel payment by ID.
+// CancelPayment canc"empty confirmation url"el payment by ID.
 func (p *PaymentHandler) CancelPayment(paymentId string) (*yoopayment.Payment, error) {
 	cancelRequest := fmt.Sprintf("%s/%s/%s", PaymentEndpoint, paymentId, CancelEndpoint)
 
